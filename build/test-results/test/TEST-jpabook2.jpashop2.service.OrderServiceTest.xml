@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="jpabook2.jpashop2.service.OrderServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-01-21T07:21:58" hostname="anchangmin-ui-MacBookAir.local" time="0.367">
+  <properties/>
+  <testcase name="상품주문_재고수량초과()" classname="jpabook2.jpashop2.service.OrderServiceTest" time="0.339"/>
+  <testcase name="상품주문()" classname="jpabook2.jpashop2.service.OrderServiceTest" time="0.017"/>
+  <testcase name="주문취소()" classname="jpabook2.jpashop2.service.OrderServiceTest" time="0.009"/>
+  <system-out><![CDATA[16:21:56.250 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [jpabook2.jpashop2.service.OrderServiceTest]: OrderServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:21:56.288 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration jpabook2.jpashop2.Jpashop2Application for test class jpabook2.jpashop2.service.OrderServiceTest
+16:21:56.341 [Test worker] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.1)
+
+2024-01-21T16:21:56.440+09:00  INFO 9383 --- [    Test worker] j.jpashop2.service.OrderServiceTest      : Starting OrderServiceTest using Java 21 with PID 9383 (started by anchangmin in /Users/anchangmin/Desktop/BackEnd/jpashop2)
+2024-01-21T16:21:56.441+09:00  INFO 9383 --- [    Test worker] j.jpashop2.service.OrderServiceTest      : No active profile set, falling back to 1 default profile: "default"
+2024-01-21T16:21:56.667+09:00  INFO 9383 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-21T16:21:56.676+09:00  INFO 9383 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 JPA repository interfaces.
+2024-01-21T16:21:56.894+09:00  INFO 9383 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-21T16:21:56.914+09:00  INFO 9383 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-01-21T16:21:56.924+09:00  INFO 9383 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-01-21T16:21:57.012+09:00  INFO 9383 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-21T16:21:57.022+09:00  INFO 9383 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-21T16:21:57.176+09:00  INFO 9383 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@78f5cbc5
+2024-01-21T16:21:57.177+09:00  INFO 9383 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-21T16:21:57.621+09:00  INFO 9383 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-21T16:21:57.626+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    alter table category 
+       drop 
+       foreign key FK2y94svpmqttx80mshyny85wqr
+2024-01-21T16:21:57.639+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717639 | took 12ms | statement | connection 1| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    alter table category 
+       drop 
+       foreign key FK2y94svpmqttx80mshyny85wqr
+
+    alter table category 
+       drop 
+       foreign key FK2y94svpmqttx80mshyny85wqr;
+2024-01-21T16:21:57.640+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    alter table category_item 
+       drop 
+       foreign key FKu8b4lwqutcdq3363gf6mlujq
+2024-01-21T16:21:57.649+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717649 | took 9ms | statement | connection 1| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    alter table category_item 
+       drop 
+       foreign key FKu8b4lwqutcdq3363gf6mlujq
+
+    alter table category_item 
+       drop 
+       foreign key FKu8b4lwqutcdq3363gf6mlujq;
+2024-01-21T16:21:57.649+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    alter table category_item 
+       drop 
+       foreign key FKcq2n0opf5shyh84ex1fhukcbh
+2024-01-21T16:21:57.653+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717653 | took 3ms | statement | connection 1| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    alter table category_item 
+       drop 
+       foreign key FKcq2n0opf5shyh84ex1fhukcbh
+
+    alter table category_item 
+       drop 
+       foreign key FKcq2n0opf5shyh84ex1fhukcbh;
+2024-01-21T16:21:57.654+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    alter table order_item 
+       drop 
+       foreign key FKija6hjjiit8dprnmvtvgdp6ru
+2024-01-21T16:21:57.659+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717659 | took 5ms | statement | connection 1| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    alter table order_item 
+       drop 
+       foreign key FKija6hjjiit8dprnmvtvgdp6ru
+
+    alter table order_item 
+       drop 
+       foreign key FKija6hjjiit8dprnmvtvgdp6ru;
+2024-01-21T16:21:57.659+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    alter table order_item 
+       drop 
+       foreign key FKt4dc2r9nbvbujrljv3e23iibt
+2024-01-21T16:21:57.662+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717662 | took 2ms | statement | connection 1| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    alter table order_item 
+       drop 
+       foreign key FKt4dc2r9nbvbujrljv3e23iibt
+
+    alter table order_item 
+       drop 
+       foreign key FKt4dc2r9nbvbujrljv3e23iibt;
+2024-01-21T16:21:57.662+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    alter table orders 
+       drop 
+       foreign key FKtkrur7wg4d8ax0pwgo0vmy20c
+2024-01-21T16:21:57.665+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717665 | took 2ms | statement | connection 1| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    alter table orders 
+       drop 
+       foreign key FKtkrur7wg4d8ax0pwgo0vmy20c
+
+    alter table orders 
+       drop 
+       foreign key FKtkrur7wg4d8ax0pwgo0vmy20c;
+2024-01-21T16:21:57.665+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    alter table orders 
+       drop 
+       foreign key FKpktxwhj3x9m4gth5ff6bkqgeb
+2024-01-21T16:21:57.667+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717667 | took 2ms | statement | connection 1| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    alter table orders 
+       drop 
+       foreign key FKpktxwhj3x9m4gth5ff6bkqgeb
+
+    alter table orders 
+       drop 
+       foreign key FKpktxwhj3x9m4gth5ff6bkqgeb;
+2024-01-21T16:21:57.668+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    drop table if exists category
+2024-01-21T16:21:57.671+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717671 | took 3ms | statement | connection 1| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    drop table if exists category
+
+    drop table if exists category;
+2024-01-21T16:21:57.671+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    drop table if exists category_item
+2024-01-21T16:21:57.673+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717673 | took 1ms | statement | connection 1| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    drop table if exists category_item
+
+    drop table if exists category_item;
+2024-01-21T16:21:57.673+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    drop table if exists delivery
+2024-01-21T16:21:57.674+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717674 | took 1ms | statement | connection 1| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    drop table if exists delivery
+
+    drop table if exists delivery;
+2024-01-21T16:21:57.674+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    drop table if exists item
+2024-01-21T16:21:57.676+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717676 | took 1ms | statement | connection 1| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    drop table if exists item
+
+    drop table if exists item;
+2024-01-21T16:21:57.676+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    drop table if exists member
+2024-01-21T16:21:57.677+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717677 | took 1ms | statement | connection 1| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    drop table if exists member
+
+    drop table if exists member;
+2024-01-21T16:21:57.677+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    drop table if exists order_item
+2024-01-21T16:21:57.679+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717679 | took 1ms | statement | connection 1| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    drop table if exists order_item
+
+    drop table if exists order_item;
+2024-01-21T16:21:57.679+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    drop table if exists orders
+2024-01-21T16:21:57.682+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717682 | took 3ms | statement | connection 1| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    drop table if exists orders
+
+    drop table if exists orders;
+2024-01-21T16:21:57.685+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    create table category (
+        category_id bigint not null auto_increment,
+        parent_id bigint,
+        name varchar(255),
+        primary key (category_id)
+    ) engine=InnoDB
+2024-01-21T16:21:57.692+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717692 | took 6ms | statement | connection 2| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    create table category (
+        category_id bigint not null auto_increment,
+        parent_id bigint,
+        name varchar(255),
+        primary key (category_id)
+    ) engine=InnoDB
+
+    create table category (
+        category_id bigint not null auto_increment,
+        parent_id bigint,
+        name varchar(255),
+        primary key (category_id)
+    ) engine=InnoDB;
+2024-01-21T16:21:57.692+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    create table category_item (
+        category_id bigint not null,
+        item_id bigint not null
+    ) engine=InnoDB
+2024-01-21T16:21:57.695+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717695 | took 2ms | statement | connection 2| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    create table category_item (
+        category_id bigint not null,
+        item_id bigint not null
+    ) engine=InnoDB
+
+    create table category_item (
+        category_id bigint not null,
+        item_id bigint not null
+    ) engine=InnoDB;
+2024-01-21T16:21:57.695+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    create table delivery (
+        delivery_id bigint not null auto_increment,
+        city varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        status enum ('READY','COMP'),
+        primary key (delivery_id)
+    ) engine=InnoDB
+2024-01-21T16:21:57.698+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717698 | took 2ms | statement | connection 2| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    create table delivery (
+        delivery_id bigint not null auto_increment,
+        city varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        status enum ('READY','COMP'),
+        primary key (delivery_id)
+    ) engine=InnoDB
+
+    create table delivery (
+        delivery_id bigint not null auto_increment,
+        city varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        status enum ('READY','COMP'),
+        primary key (delivery_id)
+    ) engine=InnoDB;
+2024-01-21T16:21:57.698+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    create table item (
+        price integer not null,
+        stock_quantity integer not null,
+        item_id bigint not null auto_increment,
+        dtype varchar(31) not null,
+        actor varchar(255),
+        artist varchar(255),
+        author varchar(255),
+        director varchar(255),
+        etc varchar(255),
+        isbn varchar(255),
+        name varchar(255),
+        primary key (item_id)
+    ) engine=InnoDB
+2024-01-21T16:21:57.700+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717700 | took 2ms | statement | connection 2| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    create table item (
+        price integer not null,
+        stock_quantity integer not null,
+        item_id bigint not null auto_increment,
+        dtype varchar(31) not null,
+        actor varchar(255),
+        artist varchar(255),
+        author varchar(255),
+        director varchar(255),
+        etc varchar(255),
+        isbn varchar(255),
+        name varchar(255),
+        primary key (item_id)
+    ) engine=InnoDB
+
+    create table item (
+        price integer not null,
+        stock_quantity integer not null,
+        item_id bigint not null auto_increment,
+        dtype varchar(31) not null,
+        actor varchar(255),
+        artist varchar(255),
+        author varchar(255),
+        director varchar(255),
+        etc varchar(255),
+        isbn varchar(255),
+        name varchar(255),
+        primary key (item_id)
+    ) engine=InnoDB;
+2024-01-21T16:21:57.701+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    create table member (
+        member_id bigint not null auto_increment,
+        city varchar(255),
+        name varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        primary key (member_id)
+    ) engine=InnoDB
+2024-01-21T16:21:57.703+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717703 | took 1ms | statement | connection 2| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    create table member (
+        member_id bigint not null auto_increment,
+        city varchar(255),
+        name varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        primary key (member_id)
+    ) engine=InnoDB
+
+    create table member (
+        member_id bigint not null auto_increment,
+        city varchar(255),
+        name varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        primary key (member_id)
+    ) engine=InnoDB;
+2024-01-21T16:21:57.704+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    create table order_item (
+        count integer not null,
+        order_price integer not null,
+        item_id bigint,
+        order_id bigint,
+        order_item_id bigint not null auto_increment,
+        primary key (order_item_id)
+    ) engine=InnoDB
+2024-01-21T16:21:57.706+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717706 | took 2ms | statement | connection 2| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    create table order_item (
+        count integer not null,
+        order_price integer not null,
+        item_id bigint,
+        order_id bigint,
+        order_item_id bigint not null auto_increment,
+        primary key (order_item_id)
+    ) engine=InnoDB
+
+    create table order_item (
+        count integer not null,
+        order_price integer not null,
+        item_id bigint,
+        order_id bigint,
+        order_item_id bigint not null auto_increment,
+        primary key (order_item_id)
+    ) engine=InnoDB;
+2024-01-21T16:21:57.706+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    create table orders (
+        delivery_id bigint,
+        member_id bigint,
+        order_date datetime(6),
+        order_id bigint not null auto_increment,
+        status enum ('ORDER','CANCEL'),
+        primary key (order_id)
+    ) engine=InnoDB
+2024-01-21T16:21:57.708+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717708 | took 1ms | statement | connection 2| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    create table orders (
+        delivery_id bigint,
+        member_id bigint,
+        order_date datetime(6),
+        order_id bigint not null auto_increment,
+        status enum ('ORDER','CANCEL'),
+        primary key (order_id)
+    ) engine=InnoDB
+
+    create table orders (
+        delivery_id bigint,
+        member_id bigint,
+        order_date datetime(6),
+        order_id bigint not null auto_increment,
+        status enum ('ORDER','CANCEL'),
+        primary key (order_id)
+    ) engine=InnoDB;
+2024-01-21T16:21:57.709+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    alter table member 
+       add constraint UK_9esvgikrmti1v7ci6v453imdc unique (name)
+2024-01-21T16:21:57.712+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717712 | took 2ms | statement | connection 2| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    alter table member 
+       add constraint UK_9esvgikrmti1v7ci6v453imdc unique (name)
+
+    alter table member 
+       add constraint UK_9esvgikrmti1v7ci6v453imdc unique (name);
+2024-01-21T16:21:57.712+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    alter table orders 
+       add constraint UK_9ct0l8xfeaiqruabcqjh1neui unique (delivery_id)
+2024-01-21T16:21:57.714+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717714 | took 2ms | statement | connection 2| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    alter table orders 
+       add constraint UK_9ct0l8xfeaiqruabcqjh1neui unique (delivery_id)
+
+    alter table orders 
+       add constraint UK_9ct0l8xfeaiqruabcqjh1neui unique (delivery_id);
+2024-01-21T16:21:57.714+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    alter table category 
+       add constraint FK2y94svpmqttx80mshyny85wqr 
+       foreign key (parent_id) 
+       references category (category_id)
+2024-01-21T16:21:57.719+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717719 | took 5ms | statement | connection 2| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    alter table category 
+       add constraint FK2y94svpmqttx80mshyny85wqr 
+       foreign key (parent_id) 
+       references category (category_id)
+
+    alter table category 
+       add constraint FK2y94svpmqttx80mshyny85wqr 
+       foreign key (parent_id) 
+       references category (category_id);
+2024-01-21T16:21:57.720+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    alter table category_item 
+       add constraint FKu8b4lwqutcdq3363gf6mlujq 
+       foreign key (item_id) 
+       references item (item_id)
+2024-01-21T16:21:57.725+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717725 | took 5ms | statement | connection 2| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    alter table category_item 
+       add constraint FKu8b4lwqutcdq3363gf6mlujq 
+       foreign key (item_id) 
+       references item (item_id)
+
+    alter table category_item 
+       add constraint FKu8b4lwqutcdq3363gf6mlujq 
+       foreign key (item_id) 
+       references item (item_id);
+2024-01-21T16:21:57.726+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    alter table category_item 
+       add constraint FKcq2n0opf5shyh84ex1fhukcbh 
+       foreign key (category_id) 
+       references category (category_id)
+2024-01-21T16:21:57.731+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717731 | took 5ms | statement | connection 2| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    alter table category_item 
+       add constraint FKcq2n0opf5shyh84ex1fhukcbh 
+       foreign key (category_id) 
+       references category (category_id)
+
+    alter table category_item 
+       add constraint FKcq2n0opf5shyh84ex1fhukcbh 
+       foreign key (category_id) 
+       references category (category_id);
+2024-01-21T16:21:57.731+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    alter table order_item 
+       add constraint FKija6hjjiit8dprnmvtvgdp6ru 
+       foreign key (item_id) 
+       references item (item_id)
+2024-01-21T16:21:57.737+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717737 | took 5ms | statement | connection 2| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    alter table order_item 
+       add constraint FKija6hjjiit8dprnmvtvgdp6ru 
+       foreign key (item_id) 
+       references item (item_id)
+
+    alter table order_item 
+       add constraint FKija6hjjiit8dprnmvtvgdp6ru 
+       foreign key (item_id) 
+       references item (item_id);
+2024-01-21T16:21:57.737+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    alter table order_item 
+       add constraint FKt4dc2r9nbvbujrljv3e23iibt 
+       foreign key (order_id) 
+       references orders (order_id)
+2024-01-21T16:21:57.743+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717743 | took 6ms | statement | connection 2| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    alter table order_item 
+       add constraint FKt4dc2r9nbvbujrljv3e23iibt 
+       foreign key (order_id) 
+       references orders (order_id)
+
+    alter table order_item 
+       add constraint FKt4dc2r9nbvbujrljv3e23iibt 
+       foreign key (order_id) 
+       references orders (order_id);
+2024-01-21T16:21:57.743+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    alter table orders 
+       add constraint FKtkrur7wg4d8ax0pwgo0vmy20c 
+       foreign key (delivery_id) 
+       references delivery (delivery_id)
+2024-01-21T16:21:57.749+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717749 | took 6ms | statement | connection 2| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    alter table orders 
+       add constraint FKtkrur7wg4d8ax0pwgo0vmy20c 
+       foreign key (delivery_id) 
+       references delivery (delivery_id)
+
+    alter table orders 
+       add constraint FKtkrur7wg4d8ax0pwgo0vmy20c 
+       foreign key (delivery_id) 
+       references delivery (delivery_id);
+2024-01-21T16:21:57.749+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    alter table orders 
+       add constraint FKpktxwhj3x9m4gth5ff6bkqgeb 
+       foreign key (member_id) 
+       references member (member_id)
+2024-01-21T16:21:57.756+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821717756 | took 6ms | statement | connection 2| url jdbc:mysql://localhost:3306/jpashop2DB
+
+    alter table orders 
+       add constraint FKpktxwhj3x9m4gth5ff6bkqgeb 
+       foreign key (member_id) 
+       references member (member_id)
+
+    alter table orders 
+       add constraint FKpktxwhj3x9m4gth5ff6bkqgeb 
+       foreign key (member_id) 
+       references member (member_id);
+2024-01-21T16:21:57.758+09:00  INFO 9383 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-21T16:21:57.852+09:00  WARN 9383 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-21T16:21:58.023+09:00  INFO 9383 --- [    Test worker] j.jpashop2.service.OrderServiceTest      : Started OrderServiceTest in 1.687 seconds (process running for 2.145)
+2024-01-21T16:21:58.335+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        member
+        (city, street, zipcode, name) 
+    values
+        (?, ?, ?, ?)
+2024-01-21T16:21:58.345+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821718345 | took 1ms | statement | connection 3| url jdbc:mysql://localhost:3306/jpashop2DB
+insert into member (city,street,zipcode,name) values (?,?,?,?)
+insert into member (city,street,zipcode,name) values ('서울','강가','123-123','회원1');
+2024-01-21T16:21:58.353+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name, price, stock_quantity, author, isbn, dtype) 
+    values
+        (?, ?, ?, ?, ?, 'B')
+2024-01-21T16:21:58.357+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821718357 | took 1ms | statement | connection 3| url jdbc:mysql://localhost:3306/jpashop2DB
+insert into item (name,price,stock_quantity,author,isbn,dtype) values (?,?,?,?,?,'B')
+insert into item (name,price,stock_quantity,author,isbn,dtype) values ('시골JPA',10000,10,NULL,NULL,'B');
+2024-01-21T16:21:58.366+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821718366 | took 0ms | rollback | connection 3| url jdbc:mysql://localhost:3306/jpashop2DB
+
+;
+2024-01-21T16:21:58.371+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        member
+        (city, street, zipcode, name) 
+    values
+        (?, ?, ?, ?)
+2024-01-21T16:21:58.372+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821718372 | took 0ms | statement | connection 4| url jdbc:mysql://localhost:3306/jpashop2DB
+insert into member (city,street,zipcode,name) values (?,?,?,?)
+insert into member (city,street,zipcode,name) values ('서울','강가','123-123','회원1');
+2024-01-21T16:21:58.373+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name, price, stock_quantity, author, isbn, dtype) 
+    values
+        (?, ?, ?, ?, ?, 'B')
+2024-01-21T16:21:58.374+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821718374 | took 0ms | statement | connection 4| url jdbc:mysql://localhost:3306/jpashop2DB
+insert into item (name,price,stock_quantity,author,isbn,dtype) values (?,?,?,?,?,'B')
+insert into item (name,price,stock_quantity,author,isbn,dtype) values ('시골JPA',10000,10,NULL,NULL,'B');
+2024-01-21T16:21:58.375+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        delivery
+        (city, street, zipcode, status) 
+    values
+        (?, ?, ?, ?)
+2024-01-21T16:21:58.376+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821718376 | took 0ms | statement | connection 4| url jdbc:mysql://localhost:3306/jpashop2DB
+insert into delivery (city,street,zipcode,status) values (?,?,?,?)
+insert into delivery (city,street,zipcode,status) values ('서울','강가','123-123',NULL);
+2024-01-21T16:21:58.377+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        orders
+        (delivery_id, member_id, order_date, status) 
+    values
+        (?, ?, ?, ?)
+2024-01-21T16:21:58.381+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821718381 | took 1ms | statement | connection 4| url jdbc:mysql://localhost:3306/jpashop2DB
+insert into orders (delivery_id,member_id,order_date,status) values (?,?,?,?)
+insert into orders (delivery_id,member_id,order_date,status) values (1,2,'2024-01-21T16:21:58.374+0900','ORDER');
+2024-01-21T16:21:58.382+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        order_item
+        (count, item_id, order_id, order_price) 
+    values
+        (?, ?, ?, ?)
+2024-01-21T16:21:58.384+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821718384 | took 1ms | statement | connection 4| url jdbc:mysql://localhost:3306/jpashop2DB
+insert into order_item (count,item_id,order_id,order_price) values (?,?,?,?)
+insert into order_item (count,item_id,order_id,order_price) values (2,2,1,10000);
+2024-01-21T16:21:58.386+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821718386 | took 0ms | rollback | connection 4| url jdbc:mysql://localhost:3306/jpashop2DB
+
+;
+2024-01-21T16:21:58.389+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        member
+        (city, street, zipcode, name) 
+    values
+        (?, ?, ?, ?)
+2024-01-21T16:21:58.390+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821718390 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/jpashop2DB
+insert into member (city,street,zipcode,name) values (?,?,?,?)
+insert into member (city,street,zipcode,name) values ('서울','강가','123-123','회원1');
+2024-01-21T16:21:58.391+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name, price, stock_quantity, author, isbn, dtype) 
+    values
+        (?, ?, ?, ?, ?, 'B')
+2024-01-21T16:21:58.391+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821718391 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/jpashop2DB
+insert into item (name,price,stock_quantity,author,isbn,dtype) values (?,?,?,?,?,'B')
+insert into item (name,price,stock_quantity,author,isbn,dtype) values ('시골JPA',10000,10,NULL,NULL,'B');
+2024-01-21T16:21:58.392+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        delivery
+        (city, street, zipcode, status) 
+    values
+        (?, ?, ?, ?)
+2024-01-21T16:21:58.392+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821718392 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/jpashop2DB
+insert into delivery (city,street,zipcode,status) values (?,?,?,?)
+insert into delivery (city,street,zipcode,status) values ('서울','강가','123-123',NULL);
+2024-01-21T16:21:58.393+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        orders
+        (delivery_id, member_id, order_date, status) 
+    values
+        (?, ?, ?, ?)
+2024-01-21T16:21:58.393+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821718393 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/jpashop2DB
+insert into orders (delivery_id,member_id,order_date,status) values (?,?,?,?)
+insert into orders (delivery_id,member_id,order_date,status) values (2,3,'2024-01-21T16:21:58.392+0900','ORDER');
+2024-01-21T16:21:58.394+09:00 DEBUG 9383 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        order_item
+        (count, item_id, order_id, order_price) 
+    values
+        (?, ?, ?, ?)
+2024-01-21T16:21:58.394+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821718394 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/jpashop2DB
+insert into order_item (count,item_id,order_id,order_price) values (?,?,?,?)
+insert into order_item (count,item_id,order_id,order_price) values (2,3,2,10000);
+2024-01-21T16:21:58.396+09:00  INFO 9383 --- [    Test worker] p6spy                                    : #1705821718396 | took 0ms | rollback | connection 5| url jdbc:mysql://localhost:3306/jpashop2DB
+
+;
+]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/Users/anchangmin/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.10/90ed94ac044ea8953b224304c762316e91fd6b31/byte-buddy-agent-1.14.10.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
