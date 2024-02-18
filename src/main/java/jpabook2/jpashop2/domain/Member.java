@@ -18,7 +18,6 @@ public class Member {
     private Long id;
 
     @Column(unique = true)
-    @NotEmpty
     private String name;
 
     @Embedded

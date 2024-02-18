@@ -20,6 +20,7 @@ public class MemberApiController {
 
     private final MemberService memberService;
 
+    // ========== 회원 조회 api ==========
     @GetMapping("/api/v1/members")
     public List<Member> membersV1(){    // 엔티티를 직접 노출 => 엔티티 내부의 정보들이 모두 노출됨
                                         // 클라이언트마다 요구 정보가 다르기 때문에 엔티티 안에 (@JsonIgnore 같은 것)을 녹이기 시작하면 해결 불가
@@ -55,6 +56,9 @@ public class MemberApiController {
         private Address address;    // address 필드 추가함
     }
 
+    // ========== ========== ==========
+
+    // ========== 회원 등록 api ==========
     @PostMapping("/api/v1/members")
     public CreateMemberResponse saveMemberV1(@RequestBody @Valid Member member) { // => api 만들때는 항상 엔티티를 파라미터로 받지 말기!
         //      + 엔티티를 외부에 노출해서도 안됨!
@@ -75,7 +79,7 @@ public class MemberApiController {
 
     /*
     V1 vs V2
-    V1 : DTO 클래스를 안만들어도 되는 장점 / 엔티티 필드를 수정했을 때 같이 수정됨 (잘못하면 같이 망함)
+    V1 : DTO 클래스를 안만들어도 되는 유일한 장점 / 엔티티 필드를 수정했을 때 같이 수정됨 (잘못하면 같이 망함)
     V2 : 엔티티와 api 스팩을 명확하게 분리 가능
          + 엔티티를 변경해도 api 스팩이 안바뀜 (멤버 엔티티에서 name -> username으로 수정하면 컴파일 오류 발생!
                                      => getName을 getUsername으로 수정만 하면 됨 => api에 전혀 영향 x)
@@ -87,6 +91,24 @@ public class MemberApiController {
      결론 : 엔티티를 외부에 노출하거나 엔티티를 파라미터로 그대로 받지 않고 api 스팩에 맞는 별도의 DTO를 만드는 것이 api 만들때의 정석임!
      */
 
+    @Data
+    static class CreateMemberRequest {
+        @NotEmpty
+        private String name;
+    }
+
+    @Data
+    static class CreateMemberResponse {
+        private Long id;
+
+        public CreateMemberResponse(Long id) {
+            this.id = id;
+        }
+    }
+
+    // ========== ========== ==========
+
+    // ========== 회원 수정 api ==========
     @PutMapping("/api/v2/members/{id}")
     public UpdateMemberResponse updateMemberV2(@PathVariable("id") Long id,
                                                @RequestBody @Valid UpdateMemberRequest request) {
@@ -107,18 +129,5 @@ public class MemberApiController {
         private String name;
     }
 
-    @Data
-    static class CreateMemberRequest {
-        @NotEmpty
-        private String name;
-    }
-
-    @Data
-    static class CreateMemberResponse {
-        private Long id;
-
-        public CreateMemberResponse(Long id) {
-            this.id = id;
-        }
-    }
+    // ========== ========== ==========
 }

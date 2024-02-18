@@ -4,31 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7587b4fb-a6d2-4860-ac7d-cce829a89b74" name="Changes" comment="first commit">
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/.gradle/8.5/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/.gradle/8.5/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/.gradle/8.5/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/.gradle/8.5/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/.gradle/8.5/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/.gradle/8.5/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/.gradle/8.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/.gradle/8.5/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/.gradle/8.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/.gradle/8.5/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/.gradle/8.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/.gradle/8.5/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/.gradle/8.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/.gradle/8.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/.gradle/8.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/build/jacoco/test.exec" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/build/jacoco/test.exec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/build/reports/jacoco/test/html/jacoco-resources/sort.js" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/build/reports/jacoco/test/html/jacoco-resources/sort.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/build/reports/tests/test/classes/study.jacoco_sample.UserServiceTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/build/reports/tests/test/classes/study.jacoco_sample.UserServiceTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/build/reports/tests/test/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/build/reports/tests/test/packages/study.jacoco_sample.html" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/build/reports/tests/test/packages/study.jacoco_sample.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/build/test-results/test/TEST-study.jacoco_sample.UserServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/build/test-results/test/TEST-study.jacoco_sample.UserServiceTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/build/test-results/test/binary/output.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/build/test-results/test/binary/output.bin.idx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/build/test-results/test/binary/results.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/build/tmp/compileTestJava/compileTransaction/stash-dir/UserServiceTest.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jacoco_sample/src/test/java/study/jacoco_sample/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jacoco_sample/src/test/java/study/jacoco_sample/UserServiceTest.java" afterDir="false" />
+    <list default="true" id="7587b4fb-a6d2-4860-ac7d-cce829a89b74" name="Changes" comment="second commit:&#10;Section 2">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" afterDir="false" />
@@ -37,15 +16,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/jpabook2.jpashop2.service.OrderServiceTest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/jpabook2.jpashop2.service.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/jpabook2.jpashop2.service.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-jpabook2.jpashop2.service.OrderServiceTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../rentalBusiness/src/test/java/changmin/rentalBusiness/domain/BoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../rentalBusiness/src/test/java/changmin/rentalBusiness/domain/BoardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/jpabook2/jpashop2/domain/Member.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/jpabook2/jpashop2/domain/Member.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jpabook2/jpashop2/api/MemberApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jpabook2/jpashop2/api/MemberApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jpabook2/jpashop2/domain/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jpabook2/jpashop2/domain/Member.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +117,7 @@
       <recent name="jpabook2.jpashop2" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.MemberServiceTest">
+  <component name="RunManager" selected="Spring Boot.Jpashop2Application">
     <configuration name="MemberServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -298,6 +273,11 @@
       <workItem from="1706452202431" duration="248000" />
       <workItem from="1706453417918" duration="311000" />
       <workItem from="1706943701931" duration="1222000" />
+      <workItem from="1707372512339" duration="3677000" />
+      <workItem from="1707487766655" duration="6000" />
+      <workItem from="1707549031827" duration="384000" />
+      <workItem from="1708175691149" duration="3728000" />
+      <workItem from="1708240241756" duration="1748000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -323,15 +303,58 @@
       <option name="project" value="LOCAL" />
       <updated>1706274431190</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="second commit:&#10;Section 2">
+      <option name="closed" value="true" />
+      <created>1707392505633</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1707392505633</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="second commit:&#10;Section 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="second commit:&#10;Section 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
