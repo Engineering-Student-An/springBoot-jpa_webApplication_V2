@@ -88,4 +88,14 @@ public class OrderRepository {
         return query.getResultList();
     }
 
+    public List<Order> findAllWithMemberDelivery() {
+        // 한방 쿼리로 order, member, delivery를 조인한 다음에 select 절에 다 넣고 한번에 다 땡겨옴!
+        // 이 경우에는 LAZY 무시하고 (프록시 아니고) 진짜 객체값을 모두 채워서 다 가져옴!
+        // ==> 페치 조인
+        return em.createQuery(
+                "select o from Order o" +
+                        " join fetch o.member m" +     // order 조회할 때 객체 그래프로 member 까지 한번에 조회!
+                        " join fetch o.delivery d", Order.class
+        ).getResultList();
+    }
 }
