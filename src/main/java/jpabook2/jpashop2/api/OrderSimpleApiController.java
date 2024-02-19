@@ -5,6 +5,8 @@ import jpabook2.jpashop2.domain.Order;
 import jpabook2.jpashop2.domain.OrderStatus;
 import jpabook2.jpashop2.repository.OrderRepository;
 import jpabook2.jpashop2.repository.OrderSearch;
+import jpabook2.jpashop2.repository.order.simplequery.OrderSimpleQueryDto;
+import jpabook2.jpashop2.repository.order.simplequery.OrderSimpleQueryRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -94,5 +96,15 @@ public class OrderSimpleApiController {
         return result;
     }
 
+    // v3 : 엔티티 조회한 이후에 DTO로 변환해서 넘김
+    // v4 : JPA에서 바로 DTO로 끄집어냄 => 성능최적화
+    // 차이점 : 둘다 페치 조인으로 한방 쿼리 나가지만 v3와는 다르게 v4에서는 원하는 것만 셀렉트 쿼리 나감!
+    // v3 : 재사용성 good (공용으로 사용가능)
+    // v4 : 해당 경우에만 사용 가능
 
+    private final OrderSimpleQueryRepository orderSimpleQueryRepository;
+    @GetMapping("/api/v4/simple-orders")
+    public List<OrderSimpleQueryDto> ordersV4() {
+        return orderSimpleQueryRepository.findOrderDtos();
+    }
 }
