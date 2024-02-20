@@ -104,4 +104,19 @@ public class OrderApiController {
     }
 
 
+    // orderRepository에서 페치 조인 해준것 제외하고는 v2와 코드 모두 동일
+    // 그러나 쿼리는 엄청 줄어들었음!
+    // 치명적 단점 : 페이징 불가능
+    // cf) 컬렉션 페치 조인은 1개만 사용하자 (데이터가 부정합하게 조회될 수 있으므로)
+    @GetMapping("/api/v3/orders")
+    public List<OrderDto> ordersV3() {
+        List<Order> orders = orderRepository.findAllWithItem();
+        // 조인 결과 => 데이터 수가 2배로 뻥튀기 됨!
+        // ==> 스프링부트 3버전 부터는 Hibernate 6 버전 사용 => Hibernate 6 버전 : 자동 distinct 적용 => 페치 조인 사용 시 자동으로 중복제거됨!
+        // (같은 주문서에 orderItem이 2개이기 때문에 orderId로 조인 결과 동일 orderId를 갖는 두개의 데이터로 조인됨)
+        List<OrderDto> result = orders.stream()
+                .map(o -> new OrderDto(o))
+                .collect(Collectors.toList());
+        return result;
+    }
 }

@@ -93,11 +93,30 @@ public class OrderRepository {
         // 이 경우에는 LAZY 무시하고 (프록시 아니고) 진짜 객체값을 모두 채워서 다 가져옴!
         // ==> 페치 조인
         return em.createQuery(
-                "select o from Order o" +
+                "select distinct o from Order o" +
+                        // distinct : 스프링부트 3버전 미만인 경우 조인 결과로 데이터 뻥튀기 방지용
+                        // distinct => DB에서의 distinct는 한 줄의 데이터 모두 동일해야 중복 제거함
+                        // JPA에서 자체적으로 Order를 가지고 올때 같은 Id 값이면 중복제거!
+                        // 결론 : JPA의 distinct => DB에 distinct 키워드 넣어서 쿼리 보내고 + 루트(엔티티) 가 중복인 경우에 중복을 제거하고 컬렉션에 담아줌!
                         " join fetch o.member m" +     // order 조회할 때 객체 그래프로 member 까지 한번에 조회!
                         " join fetch o.delivery d", Order.class
         ).getResultList();
     }
 
 
+    public List<Order> findAllWithItem() {
+        return em.createQuery(
+                "select o from Order o" +
+                " join fetch o.member m" +
+                " join fetch o.delivery d" +
+                " join fetch o.orderItems oi" +
+                " join fetch oi.item i", Order.class)
+                // 컬렉션 페치 조인 : 페이징 쿼리가 DB에 전송되지 않음!
+                // (에러 로그) HHH90003004: firstResult/maxResults specified with collection fetch; applying in memory
+                // 뜻 : 메모리에서 sorting 한다는 경고
+                // 만약 데이터가 많으면 모두 애플리케이션으로 퍼올린 다음에 페이징 처리 => 메모리 초과 가능
+                .setFirstResult(1)
+                .setMaxResults(100)
+                .getResultList();
+    }
 }
