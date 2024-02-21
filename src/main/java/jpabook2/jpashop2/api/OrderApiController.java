@@ -6,6 +6,8 @@ import jpabook2.jpashop2.domain.OrderItem;
 import jpabook2.jpashop2.domain.OrderStatus;
 import jpabook2.jpashop2.repository.OrderRepository;
 import jpabook2.jpashop2.repository.OrderSearch;
+import jpabook2.jpashop2.repository.order.query.OrderQueryDto;
+import jpabook2.jpashop2.repository.order.query.OrderQueryRepository;
 import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -69,9 +71,9 @@ public class OrderApiController {
         private LocalDateTime orderDate;
         private OrderStatus orderStatus;
         private Address address;
-//        private List<OrderItem> orderItems;     // DTO 안에 엔티티가 존재하면 안됨! (매핑도 안됨)
-                                                // 엔티티가 외부에 노출되기 때문에 (=> 엔티티에 대한 의존을 완전히 끊어야됨!)
-                                                // ==> OrderItem 조차도 DTO로 모두 변환해야함!!!
+        //        private List<OrderItem> orderItems;     // DTO 안에 엔티티가 존재하면 안됨! (매핑도 안됨)
+        // 엔티티가 외부에 노출되기 때문에 (=> 엔티티에 대한 의존을 완전히 끊어야됨!)
+        // ==> OrderItem 조차도 DTO로 모두 변환해야함!!!
         private List<OrderItemDto> orderItems;
 
         public OrderDto(Order order) {
@@ -142,5 +144,19 @@ public class OrderApiController {
                 .map(o -> new OrderDto(o))
                 .collect(Collectors.toList());
         return result;
+    }
+
+
+
+    private final OrderQueryRepository orderQueryRepository;
+
+    @GetMapping("/api/v4/orders")
+    public List<OrderQueryDto> ordersV4() {
+        return orderQueryRepository.findOrderQueryDtos();
+    }
+
+    @GetMapping("/api/v5/orders")
+    public List<OrderQueryDto> ordersV5() {
+        return orderQueryRepository.findAllByDto_optimiaztion();
     }
 }
