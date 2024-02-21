@@ -165,7 +165,7 @@ public class OrderApiController {
         return orderQueryRepository.findAllByDto_optimiaztion();
     }
 
-    // v5 최적화 => 쿼리 1방으로 해결 / 페이징 불가능
+    // v5 최적화 => 쿼리 1방으로 해결 / Order기준으로 페이징 불가능
     @GetMapping("/api/v6/orders")
     public List<OrderQueryDto> ordersV6() {
         // OrderFlatDto 의 스펙으로 반환
