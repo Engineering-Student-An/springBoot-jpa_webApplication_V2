@@ -8,6 +8,7 @@ import jpabook2.jpashop2.domain.Order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,6 +105,7 @@ public class OrderRepository {
     }
 
 
+
     public List<Order> findAllWithItem() {
         return em.createQuery(
                 "select o from Order o" +
@@ -117,6 +119,17 @@ public class OrderRepository {
                 // 만약 데이터가 많으면 모두 애플리케이션으로 퍼올린 다음에 페이징 처리 => 메모리 초과 가능
                 .setFirstResult(1)
                 .setMaxResults(100)
+                .getResultList();
+    }
+
+    public List<Order> findAllWithMemberDelivery(int offset, int limit) {
+
+        return em.createQuery(
+                "select distinct o from Order o" +
+                        " join fetch o.member m" +     // order 조회할 때 객체 그래프로 member 까지 한번에 조회!
+                        " join fetch o.delivery d", Order.class)
+                .setFirstResult(offset)
+                .setMaxResults(limit)
                 .getResultList();
     }
 }

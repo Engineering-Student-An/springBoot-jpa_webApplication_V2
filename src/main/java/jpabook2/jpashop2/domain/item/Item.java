@@ -5,6 +5,7 @@ import jpabook2.jpashop2.domain.Category;
 import jpabook2.jpashop2.exception.NotEnoughStockException;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "dtype")
 @Getter @Setter
+@BatchSize(size = 1000) // xToOne  (OrderItem -> Item) 관계에서는 엔티티에 어노테이션 붙여야함!
 public abstract class Item {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

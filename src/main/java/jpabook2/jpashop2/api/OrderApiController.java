@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
@@ -114,6 +115,29 @@ public class OrderApiController {
         // 조인 결과 => 데이터 수가 2배로 뻥튀기 됨!
         // ==> 스프링부트 3버전 부터는 Hibernate 6 버전 사용 => Hibernate 6 버전 : 자동 distinct 적용 => 페치 조인 사용 시 자동으로 중복제거됨!
         // (같은 주문서에 orderItem이 2개이기 때문에 orderId로 조인 결과 동일 orderId를 갖는 두개의 데이터로 조인됨)
+        List<OrderDto> result = orders.stream()
+                .map(o -> new OrderDto(o))
+                .collect(Collectors.toList());
+        return result;
+    }
+
+    // v3에서 페이징 가능한 버전
+    //  - ToOne 관계만 우선 모두 페치 조인으로 최적화
+    //  - 컬렉션 관계는 hibernate.default_batch_fetch_size, @BatchSize로 최적화
+    // spring.jpa.properties.hibernate.default_batch_fetch_size => select 문의 where 절에 in 커멘드가 들어감!
+    // => Order 조회 시 결과 2개 => 컬렉션 (orders) 과 관련된 OrderItems를 미리 in 쿼리로 한번에 다 가져옴!
+    // => batchsize : in 쿼리로 미리 땡겨올 개수
+    // item => userA 주문 2개 + userB 주문 2개 = 총 4개 (원래는 4번 쿼리)
+    // 옵션 설정 이후 한방에 4개 모두 땡겨옴!!
+
+    // 결론 : 1+N+M ==> 1+1+1
+    // + 매 쿼리마다 DB에서 에플리케이션으로 전송되는 데이터에 중복이 존재하지 않음
+    @GetMapping("/api/v3.1/orders")
+    public List<OrderDto> ordersV3_page(@RequestParam(value = "offset", defaultValue = "0") int offset,
+                                        @RequestParam(value = "limit", defaultValue = "100") int limit) {
+        // xToOne 관계는 모두 페치 조인 ( : 이 관계는 데이터 row 수가 증가하지 않고 옆에 컬럼만 추가되기 때문 )
+        List<Order> orders = orderRepository.findAllWithMemberDelivery(offset, limit);
+
         List<OrderDto> result = orders.stream()
                 .map(o -> new OrderDto(o))
                 .collect(Collectors.toList());

@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class Order {
     private Member member;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)   // cascade : order를 persist할 때 orderItems도 영속성 전이에 의해서 자동으로 persist됨!
+    @BatchSize(size = 1000)     // batchsize를 디테일하게 컬렉션에만 적용
     private List<OrderItem> orderItems = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
