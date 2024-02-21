@@ -6,6 +6,8 @@ import jpabook2.jpashop2.domain.OrderItem;
 import jpabook2.jpashop2.domain.OrderStatus;
 import jpabook2.jpashop2.repository.OrderRepository;
 import jpabook2.jpashop2.repository.OrderSearch;
+import jpabook2.jpashop2.repository.order.query.OrderFlatDto;
+import jpabook2.jpashop2.repository.order.query.OrderItemQueryDto;
 import jpabook2.jpashop2.repository.order.query.OrderQueryDto;
 import jpabook2.jpashop2.repository.order.query.OrderQueryRepository;
 import lombok.Data;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -59,7 +63,7 @@ public class OrderApiController {
         // orders를 DTO로 변환 과정
         List<OrderDto> result = orders.stream()
                 .map(o -> new OrderDto(o))
-                .collect(Collectors.toList());
+                .collect(toList());
         return result;
     }
 
@@ -87,7 +91,7 @@ public class OrderApiController {
 
             orderItems = order.getOrderItems().stream()
                     .map(orderItem -> new OrderItemDto(orderItem))
-                    .collect(Collectors.toList());
+                    .collect(toList());
         }
     }
 
@@ -119,7 +123,7 @@ public class OrderApiController {
         // (같은 주문서에 orderItem이 2개이기 때문에 orderId로 조인 결과 동일 orderId를 갖는 두개의 데이터로 조인됨)
         List<OrderDto> result = orders.stream()
                 .map(o -> new OrderDto(o))
-                .collect(Collectors.toList());
+                .collect(toList());
         return result;
     }
 
@@ -142,7 +146,7 @@ public class OrderApiController {
 
         List<OrderDto> result = orders.stream()
                 .map(o -> new OrderDto(o))
-                .collect(Collectors.toList());
+                .collect(toList());
         return result;
     }
 
@@ -155,8 +159,30 @@ public class OrderApiController {
         return orderQueryRepository.findOrderQueryDtos();
     }
 
+    // 코드 양이 늘어남 / 데이터 select 양은 줄어듦
     @GetMapping("/api/v5/orders")
     public List<OrderQueryDto> ordersV5() {
         return orderQueryRepository.findAllByDto_optimiaztion();
+    }
+
+    // v5 최적화 => 쿼리 1방으로 해결 / 페이징 불가능
+    @GetMapping("/api/v6/orders")
+    public List<OrderQueryDto> ordersV6() {
+        // OrderFlatDto 의 스펙으로 반환
+//        return orderQueryRepository.findAllByDto_flat();
+        
+        // OrderFlatDto 스펙의 리스트에서 직접 중복을 걸러서 OrderQueryDto 스펙으로 변환함!
+        List<OrderFlatDto> flats = orderQueryRepository.findAllByDto_flat();
+
+        return flats.stream()
+                .collect(groupingBy(o -> new OrderQueryDto(o.getOrderId(),
+                                o.getName(), o.getOrderDate(), o.getOrderStatus(), o.getAddress()),
+                        mapping(o -> new OrderItemQueryDto(o.getOrderId(),
+                                o.getItemName(), o.getOrderPrice(), o.getCount()), toList())
+                )).entrySet().stream()
+                .map(e -> new OrderQueryDto(e.getKey().getOrderId(),
+                        e.getKey().getName(), e.getKey().getOrderDate(), e.getKey().getOrderStatus(),
+                        e.getKey().getAddress(), e.getValue()))
+                .collect(toList());
     }
 }
