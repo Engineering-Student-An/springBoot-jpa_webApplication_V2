@@ -117,8 +117,8 @@ public class OrderRepository {
                 // (에러 로그) HHH90003004: firstResult/maxResults specified with collection fetch; applying in memory
                 // 뜻 : 메모리에서 sorting 한다는 경고
                 // 만약 데이터가 많으면 모두 애플리케이션으로 퍼올린 다음에 페이징 처리 => 메모리 초과 가능
-                .setFirstResult(1)
-                .setMaxResults(100)
+//                .setFirstResult(1)
+//                .setMaxResults(100)
                 .getResultList();
     }
 

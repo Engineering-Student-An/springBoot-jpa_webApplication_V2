@@ -10,6 +10,7 @@ import jpabook2.jpashop2.repository.order.query.OrderFlatDto;
 import jpabook2.jpashop2.repository.order.query.OrderItemQueryDto;
 import jpabook2.jpashop2.repository.order.query.OrderQueryDto;
 import jpabook2.jpashop2.repository.order.query.OrderQueryRepository;
+import jpabook2.jpashop2.service.query.OrderQueryService;
 import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
 
@@ -35,6 +35,9 @@ public class OrderApiController {
         for (Order order : all) {
             // 프록시 객체 강제 초기화 (Hibernate5 모듈 : 레이지로딩 => 초기화 된 프록시 객체만 끌고옴)
             order.getMember().getName();
+            // section 5 :OSIV
+            // OSIV를 off하면 위 줄에서 에러터짐 ( : 프록시 객체를 초기화 하지 못함 => 트랜잭션이 끝나고 지연로딩 불가)
+            // 에러 해결법 : 1. 트랜잭션 내부에서 다 로딩 / 2. 페치 조인 사용
             order.getDelivery().getAddress();
 
             // OrderItem 프록시 초기화
@@ -111,20 +114,23 @@ public class OrderApiController {
     }
 
 
+    private final OrderQueryService orderQueryService;
+
     // orderRepository에서 페치 조인 해준것 제외하고는 v2와 코드 모두 동일
     // 그러나 쿼리는 엄청 줄어들었음!
     // 치명적 단점 : 페이징 불가능
     // cf) 컬렉션 페치 조인은 1개만 사용하자 (데이터가 부정합하게 조회될 수 있으므로)
     @GetMapping("/api/v3/orders")
-    public List<OrderDto> ordersV3() {
-        List<Order> orders = orderRepository.findAllWithItem();
-        // 조인 결과 => 데이터 수가 2배로 뻥튀기 됨!
-        // ==> 스프링부트 3버전 부터는 Hibernate 6 버전 사용 => Hibernate 6 버전 : 자동 distinct 적용 => 페치 조인 사용 시 자동으로 중복제거됨!
-        // (같은 주문서에 orderItem이 2개이기 때문에 orderId로 조인 결과 동일 orderId를 갖는 두개의 데이터로 조인됨)
-        List<OrderDto> result = orders.stream()
-                .map(o -> new OrderDto(o))
-                .collect(toList());
-        return result;
+    public List<jpabook2.jpashop2.service.query.OrderDto> ordersV3() {
+        return orderQueryService.ordersV3();    // OrderQueryService로 아래 전체 코드 옮김
+//        List<Order> orders = orderRepository.findAllWithItem();
+//        // 조인 결과 => 데이터 수가 2배로 뻥튀기 됨!
+//        // ==> 스프링부트 3버전 부터는 Hibernate 6 버전 사용 => Hibernate 6 버전 : 자동 distinct 적용 => 페치 조인 사용 시 자동으로 중복제거됨!
+//        // (같은 주문서에 orderItem이 2개이기 때문에 orderId로 조인 결과 동일 orderId를 갖는 두개의 데이터로 조인됨)
+//        List<OrderDto> result = orders.stream()
+//                .map(o -> new OrderDto(o))
+//                .collect(toList());
+//        return result;
     }
 
     // v3에서 페이징 가능한 버전
