@@ -1,9 +1,11 @@
 package jpabook2.jpashop2.repository;
 
+import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
-import jpabook2.jpashop2.domain.Member;
+import jpabook2.jpashop2.domain.*;
 import jpabook2.jpashop2.domain.Order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -88,6 +90,36 @@ public class OrderRepository {
         TypedQuery<Order> query = em.createQuery(cq).setMaxResults(1000); //최대 1000건
         return query.getResultList();
     }
+
+    // QueryDSL 사용
+    public List<Order> findAll(OrderSearch orderSearch) {
+        JPAQueryFactory query = new JPAQueryFactory(em);
+        QOrder order = QOrder.order;
+        QMember member = QMember.member;
+
+        // QueryDSL 사용 : JPQL로 바뀌어서 실행됨!
+        return query.select(order)
+                .from(order)
+                .join(order.member, member)
+                // 주문 상태가 똑같은지 확인 (null이면 where 절 안씀) => 동적쿼리
+                // , : and
+                .where(statusEq(orderSearch.getOrderStatus()), nameLike(orderSearch.getMemberName()))
+                .limit(1000)
+                .fetch();
+    }
+
+    private static BooleanExpression nameLike(String memberName) {
+        if(!StringUtils.hasText(memberName)) return null;
+        return QMember.member.name.like(memberName);
+    }
+
+    private BooleanExpression statusEq(OrderStatus statusCond) {
+        if(statusCond == null) {
+            return null;
+        }
+        return QOrder.order.status.eq(statusCond);
+    }
+
 
     public List<Order> findAllWithMemberDelivery() {
         // 한방 쿼리로 order, member, delivery를 조인한 다음에 select 절에 다 넣고 한번에 다 땡겨옴!

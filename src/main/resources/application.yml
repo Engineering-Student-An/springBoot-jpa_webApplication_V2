@@ -15,7 +15,7 @@ spring:
         default_batch_fetch_size: 100
 
     # OSIV(Open Session in View) 옵션 끄기
-    open-in-view: false
+#    open-in-view: false
 
 logging:
   level:
